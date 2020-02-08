@@ -1,6 +1,6 @@
 # Kebutuhan
 
-- Laravel Framework 6.14.0
+- Laravel Framework 5.5.48
 - psql (PostgreSQL) 11.5 (Ubuntu 11.5-0ubuntu0.19.04.1)
 - PHP 7.2.24-0ubuntu0.19.04.2
 - Visual Studio Code 1.41.1
@@ -13,7 +13,7 @@
 
 # Instalasi Laravel
 
-- composer create-project --prefer-dist laravel/laravel lima "6.0.*"
+- composer create-project --prefer-dist laravel/laravel lima "5.5.*"
 - Buat repostiroy lima di github dan dihubungkan ke https://github.com/tisttnf/lima
 
 # Konfigurasi Database
@@ -23,12 +23,12 @@
 
 # Buat Authentication
 
-- composer require laravel/ui
-- sudo apt install npm
-- npm install && npm run dev 
-- php artisan ui react --auth
+- php artisan make:auth
+
+# CRUD Table
+
+- prodi
 
 # Referensi
 
-- https://kopiding.in/tutorial-crud-laravel-6-lengkap-disertai-screenshot/
-- https://www.rubypedia.com/blog/bagaimana-cara-menjalanakan-makeauth-di-laravel-6/
+- https://github.com/mazharrasyad/Web-Laravel-Learn/tree/masterOF
