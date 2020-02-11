@@ -25,7 +25,7 @@ class PeranController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'nama' => 'required|unique:peran',         
+            'nama' => 'required|unique:peran,nama,'.$id,         
         ]); 
 
         Peran::create($request->all());
@@ -50,7 +50,7 @@ class PeranController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'nama' => 'required|unique:peran',         
+            'nama' => 'required|unique:peran,nama,'.$id, 
         ]);
 
         $peran = Peran::findOrFail($id);

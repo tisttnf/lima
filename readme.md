@@ -31,4 +31,5 @@
 
 # Referensi
 
-- https://github.com/mazharrasyad/Web-Laravel-Learn/tree/masterOF
+- https://github.com/mazharrasyad/Web-Laravel-Learn
+- https://laravel.com/

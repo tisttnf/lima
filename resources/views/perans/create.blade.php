@@ -19,7 +19,7 @@
                 </tr>   
                 <tr>
                     <td>Nama</td>
-                    <td><input type="text" name="nama"></td>                
+                    <td><input type="text" name="nama" value="{{ old('nama') }}"></td>                
                 </tr>
                 <tr>
                     <td><a href="{{ route('peran.index') }}">Kembali</a></td>

@@ -86,6 +86,11 @@
                     <a href="{{ route('prodi.index') }}">Prodi</a>
                     <a href="{{ route('semester.index') }}">Semester</a>
                     <a href="{{ route('peran.index') }}">Peran</a>
+                    <hr>
+                    <a href="{{ route('project.index') }}">Project</a>
+                    <a href="{{ route('mvpproject.index') }}">MVP Project</a>
+                    <a href="{{ route('project.index') }}">Sprint Project</a>
+                    <a href="{{ route('project.index') }}">Log Project</a>
                 </div>
             </div>
         </div>

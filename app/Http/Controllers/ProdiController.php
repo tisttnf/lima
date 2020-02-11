@@ -50,7 +50,7 @@ class ProdiController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'nama' => 'required|unique:prodi',         
+            'nama' => 'required|unique:prodi,nama,'.$id,      
         ]);
 
         $prodi = Prodi::findOrFail($id);

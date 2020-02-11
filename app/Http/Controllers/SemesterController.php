@@ -26,7 +26,7 @@ class SemesterController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'nama' => 'required|unique:semester',         
+            'nama' => 'required|unique:semester|min:5|max:5',         
         ]); 
 
         Semester::create($request->all());
@@ -51,7 +51,7 @@ class SemesterController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'nama' => 'required|unique:semester',         
+            'nama' => 'required|min:5|max:5|unique:semester,nama,'.$id,        
         ]);
 
         $semester = Semester::findOrFail($id);
