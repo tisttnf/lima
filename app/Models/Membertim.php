@@ -17,9 +17,9 @@ class Membertim extends Model
         'created_by_id',
     ];
 
-    public function member_tims()
+    public function member_tim_skors()
     {
-        return $this->hasMany(Membertimskor::class, 'member_tim_id', 'id');        
+        return $this->hasMany(Membertimskor::class, 'member_tim_id', 'id');
     }
 
     public function tim()

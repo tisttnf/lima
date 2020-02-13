@@ -10,14 +10,14 @@
 -- prodi			Admin 			Admin			Admin			Admin 		# Support	Fix
 -- semester 		Admin 			Admin			Admin			Admin 		# Support	Fix
 -- peran 			Admin 			Admin			Admin			Admin 		# Support	Fix
--- project			PO				All				Ds/As/Admin		Admin		# Project	
+-- project			PO				All				Ds/As/Admin		Admin		# Project	Fix
 -- mvp_project		Mhs				All				Admin			Admin		# Project	
 -- sprint_project	Mhs				All				Admin			Admin		# Project	
 -- log_project		Mhs				All				Admin			Admin		# Project	
--- tim				Ds				All				Ds/Admin		Admin		# Tim		
--- member_tim		Ds/As			All				Admin			Admin		# Tim		
--- tim_skor			Ds/As			All				Admin			Admin		# Skor		
--- member_skor		Ds/As			All				Admin			Admin		# Skor		
+-- tim				Ds				All				Ds/Admin		Admin		# Tim		Fix
+-- member_tim		Ds/As			All				Admin			Admin		# Tim		Fix
+-- tim_skor			Ds/As			All				Admin			Admin		# Skor		Fix
+-- member_skor		Ds/As			All				Admin			Admin		# Skor		Fix
 
 -- Hapus Table
 
@@ -28,7 +28,7 @@ drop table if exists sprint_project;
 drop table if exists mvp_project;
 drop table if exists project;
 drop type if exists status;
-drop table if exists member_skor;
+drop table if exists member_tim_skor;
 drop table if exists tim_skor;
 drop table if exists member_tim;
 drop table if exists tim;
@@ -167,7 +167,7 @@ create table tim_skor(
 	id serial primary key,
 	tim_id int references tim(id) not null,
 	penilai_id int references dosen(id) not null,
-	tanggal date not null,
+	tanggal date default now() not null,
 	skor double precision not null,
 	created_at timestamp,
 	updated_at timestamp
@@ -178,7 +178,7 @@ create table member_tim_skor(
 	id serial primary key,
 	member_tim_id int references member_tim(id) not null,
 	penilai_id int references dosen(id) not null,
-	tanggal date not null,
+	tanggal date default now() not null,
 	skor double precision not null,
 	created_at timestamp,
 	updated_at timestamp
@@ -307,3 +307,9 @@ insert into tim values
 
 insert into member_tim values
 (default, 1, 3, 1, 'Membuat CRUD', default, 2);
+
+insert into tim_skor values
+(default, 1, 2, '01-01-2020', 80);
+
+insert into member_tim_skor values
+(default, 1, 2, '01-01-2020', 80);

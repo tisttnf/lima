@@ -32,4 +32,4 @@ Route::resource('/tim', 'TimController');
 Route::resource('/membertim', 'MembertimController');
 // Skor
 Route::resource('/timskor', 'TimskorController');
-// Route::resource('/membertimskor', 'MembertimskorController');
+Route::resource('/membertimskor', 'MembertimskorController');

@@ -106,7 +106,7 @@
                     <a href="{{ route('membertim.index') }}">Member Tim</a>
                     <hr>
                     <a href="{{ route('timskor.index') }}">Tim Skor</a>
-                    {{-- <a href="{{ route('membertimskor.index') }}">Member Tim Skor</a> --}}
+                    <a href="{{ route('membertimskor.index') }}">Member Tim Skor</a>
                     <hr>
                 </div>
             </div>

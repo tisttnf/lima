@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Membertim;
 use App\Models\Membertimskor;
-use App\Models\Semester;
-use App\Models\Prodi;
 use App\Models\User;
 use App\Models\Tim;
 use App\Models\Peran;

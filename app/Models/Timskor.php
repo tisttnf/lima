@@ -14,4 +14,14 @@ class Timskor extends Model
         'tanggal',
         'skor',
     ];
+
+    public function tim()
+    {
+        return $this->belongsTo(Tim::class);
+    }
+
+    public function penilai()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

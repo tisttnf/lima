@@ -49,4 +49,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Membertim::class, 'created_by_id', 'id');        
     }
+
+    public function timskor()
+    {
+        return $this->hasMany(Timskor::class, 'penilai_id', 'id');        
+    }
 }
