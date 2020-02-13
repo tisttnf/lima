@@ -15,10 +15,6 @@
                     <td>{{ $mvpproject->project->nama }}</td>                
                 </tr>
                 <tr>
-                    <td>Sprint</td>
-                    <td>{{ $mvpproject->sprint }}</td>                
-                </tr>
-                <tr>
                     <td>Tanggal Rilis</td>
                     <td>{{ $mvpproject->tanggal_rilis }}</td>
                 </tr>

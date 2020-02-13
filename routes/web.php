@@ -25,6 +25,11 @@ Route::resource('/peran', 'PeranController');
 // Project
 Route::resource('/project', 'ProjectController');
 Route::resource('/mvpproject', 'MvpprojectController');
-// Route::resource('/sprint-project', 'SprintProjectController');
-// Route::resource('/log-project', 'LogProjectController');
-// 
+Route::resource('/sprintproject', 'SprintprojectController');
+// Route::resource('/logproject', 'LogprojectController');
+// Tim
+Route::resource('/tim', 'TimController');
+Route::resource('/membertim', 'MembertimController');
+// Skor
+Route::resource('/timskor', 'TimskorController');
+// Route::resource('/membertimskor', 'MembertimskorController');

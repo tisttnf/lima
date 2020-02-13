@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Project;
 use Illuminate\Database\Eloquent\Model;
 
 class Mvpproject extends Model
@@ -11,7 +10,6 @@ class Mvpproject extends Model
 
     protected $fillable = [
         'project_id',
-        'sprint',
         'tanggal_rilis',
         'deskripsi',
         'created_by',

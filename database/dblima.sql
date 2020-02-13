@@ -142,7 +142,7 @@ create table tim(
 	prodi_id int references prodi(id) not null,
 	final_skor double precision not null default 0,
 	asisten_dosen_id int references asisten_dosen(id) default null,
-	created_by int references "dosen"(id) not null,
+	created_by_id int references dosen(id) not null,
 	created_at timestamp,
 	updated_at timestamp
 );
@@ -151,11 +151,11 @@ create table tim(
 create table member_tim(
 	id serial primary key,
 	tim_id int references tim(id) not null,
-	user_id int references mahasiswa(id) not null,
+	mahasiswa_id int references mahasiswa(id) not null,
 	peran_id int references peran(id) not null,
 	tanggung_jawab text not null,
 	final_skor double precision not null default 0,
-	created_by int references dosen(id) not null,
+	created_by_id int references dosen(id) not null,
 	created_at timestamp,
 	updated_at timestamp	
 );
@@ -166,7 +166,7 @@ create table member_tim(
 create table tim_skor(
 	id serial primary key,
 	tim_id int references tim(id) not null,
-	penilai_id int references "user"(id) not null,
+	penilai_id int references dosen(id) not null,
 	tanggal date not null,
 	skor double precision not null,
 	created_at timestamp,
@@ -174,10 +174,10 @@ create table tim_skor(
 );
 
 -- Fix
-create table member_skor(
+create table member_tim_skor(
 	id serial primary key,
 	member_tim_id int references member_tim(id) not null,
-	penilai_id int references "user"(id) not null,
+	penilai_id int references dosen(id) not null,
 	tanggal date not null,
 	skor double precision not null,
 	created_at timestamp,
@@ -202,7 +202,7 @@ create table project(
 	semester_id int references semester(id) not null,
 	tim_id int references tim(id) default null,
 	final_skor double precision not null default 0,
-	created_by int references project_owner(id) not null,
+	created_by_id int references project_owner(id) not null,
 	created_at timestamp,
 	updated_at timestamp
 );
@@ -213,7 +213,7 @@ create table mvp_project(
 	project_id int references project(id),
 	tanggal_rilis date,
 	deskripsi text,
-	created_by int references mahasiswa(id) not null,
+	created_by_id int references mahasiswa(id) not null,
 	created_at timestamp,
 	updated_at timestamp
 );
@@ -225,7 +225,7 @@ create table sprint_project(
 	sprint int not null,
 	tanggal_mulai date not null,
 	tanggal_akhir date not null,
-	created_by int references "user"(id) not null,
+	created_by_id int references mahasiswa(id) not null,
 	created_at timestamp,
 	updated_at timestamp
 );
@@ -244,7 +244,7 @@ create table log_project(
 	bobot bobot not null,
 	kendala text not null,
 	review text not null,
-	created_by int references "user"(id) not null,
+	created_by_id int references mahasiswa(id) not null,
 	created_at timestamp,
 	updated_at timestamp
 );
@@ -290,22 +290,20 @@ insert into dosen values
 insert into mahasiswa values
 (default, 'Muhammad Azhar Rasyad', 'Mahasiswa', 'muhazharrasyad@gmail.com', '123456', default, '081290351971', default, default, default, '0110217029');
 
+insert into asisten_dosen values
+(default, 'Muhammad Yazid Supriadi', 'Asisten Dosen', 'yazid@gmail.com', '123456', default, '081290351972', default, default, default, '0110217030');
+
 insert into project values
 (default, 'Pemrograman Mobile', 'Membuat Aplikasi Android untuk Resep Masakan', '01-01-2020', '03-01-2020', 12, 10000000, default, default, 1, default, default, 1);
 
 insert into mvp_project values
 (default, 1, '01-01-2020', 'Fitur Login dapat digunakan', 3);
 
+insert into sprint_project values
+(default, 1, 1, '03-02-2020', '09-02-2020', 3);
+
 insert into tim values
-(default, 'Kelompok 1', 2, 2, default, default, 2);
+(default, 'Kelompok 1', 2, 2, 0, 4, 2);
 
 insert into member_tim values
 (default, 1, 3, 1, 'Membuat CRUD', default, 2);
-
-select * from "user";
-select * from project;
-select * from tim;
-select * from member_tim;
-select * from prodi;
-select * from semester;
-select * from peran;

@@ -11,7 +11,7 @@
             {{ session('message') }}
         @endif
 
-        <form action="{{ route('mvpproject.update', $mvpproject->id)}}" method="post">
+        <form action="{{ route('sprintproject.update', $sprintproject->id)}}" method="post">
             {{ csrf_field() }}
             <input type="hidden" name="_method" value="PATCH">
             <table border=1>
@@ -22,7 +22,7 @@
                     <td>Project</td>
                     <td>
                         <select name="project_id">
-                            <option value="{{ $mvpproject->proejct_id }}" disabled selected>{{ $mvpproject->project->nama }}</option>
+                            <option value="{{ $sprintproject->proejct_id }}" disabled selected>{{ $sprintproject->project->nama }}</option>
                             @foreach ($projects as $project)                                
                                 <option value="{{ $project->id }}">{{ $project->nama }}</option>  
                             @endforeach                                                                  
@@ -31,14 +31,14 @@
                 </tr>
                 <tr>
                     <td>Tanggal Rilis</td>
-                    <td><input type="date" name="tanggal_rilis" value="{{ $mvpproject->tanggal_rilis }}"></td>
+                    <td><input type="date" name="tanggal_rilis" value="{{ $sprintproject->tanggal_rilis }}"></td>
                 </tr>
                 <tr>
                     <td>Deskripsi</td>
-                    <td><textarea name="deskripsi">{{ $mvpproject->deskripsi }}</textarea></td>
+                    <td><textarea name="deskripsi">{{ $sprintproject->deskripsi }}</textarea></td>
                 </tr>
                 <tr>
-                    <td><a href="{{ route('mvpproject.index') }}">Kembali</a></td>
+                    <td><a href="{{ route('sprintproject.index') }}">Kembali</a></td>
                     <td><button type="submit">Update</button></td>
                 </tr>
             </table>

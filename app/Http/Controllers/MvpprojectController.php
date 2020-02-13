@@ -25,7 +25,10 @@ class MvpprojectController extends Controller
 
     public function store(Request $request)
     {
+        $request['created_by_id'] = 3;
+
         $this->validate($request,[
+            'project_id' => 'required',
             'tanggal_rilis' => 'required|date',
             'deskripsi' => 'required',         
         ]); 
@@ -45,8 +48,9 @@ class MvpprojectController extends Controller
     public function edit($id)
     {
         $mvpproject = Mvpproject::findOrFail($id);
+        $projects = Project::all();
 
-        return view('mvpprojects.edit', compact('mvpproject'));
+        return view('mvpprojects.edit', compact('mvpproject', 'projects]'));
     }
 
     public function update(Request $request, $id)

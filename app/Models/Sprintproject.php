@@ -11,8 +11,13 @@ class Sprintproject extends Model
     protected $fillable = [
         'project_id',
         'sprint',
-        'tanggal_rilis',
-        'deskripsi',
+        'tanggal_mulai',
+        'tanggal_akhir',
         'created_by',
     ];
+
+    public function project()
+    {
+        return $this->belongsTo(Project::class);
+    }
 }

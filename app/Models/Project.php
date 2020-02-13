@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Semester;
-use App\Models\Tim;
 use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
@@ -22,8 +20,18 @@ class Project extends Model
         'semester_id',
         'tim_id',
         'final_skor',
-        'created_by',
+        'created_by_id',
     ];
+
+    public function mvpprojects()
+    {
+        return $this->hasMany(Mvpproject::class, 'project_id', 'id');        
+    }
+
+    public function sprintprojects()
+    {
+        return $this->hasMany(Sprintproject::class, 'project_id', 'id');        
+    }
 
     public function semester()
     {
@@ -33,5 +41,10 @@ class Project extends Model
     public function tim()
     {
         return $this->belongsTo(Tim::class);
+    }
+
+    public function created_by()
+    {
+        return $this->belongsTo(User::class);
     }
 }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Peran;
-use App\Models\MemberTim;
+use App\Models\Membertim;
 use Illuminate\Http\Request;
 
 class PeranController extends Controller
@@ -61,10 +61,10 @@ class PeranController extends Controller
 
     public function destroy($id)
     {                
-        $member_tim = MemberTim::where('peran_id', '=', $id)->first();
+        $membertim = Membertim::where('peran_id', '=', $id)->first();
         $pesan = 'Gagal Karena Data Masih Digunakan Pada Tabel Lain';
 
-        if(!$member_tim){            
+        if(!$membertim){            
             $peran = Peran::findOrFail($id);
             $peran->delete();
             $pesan = 'Hapus Data Berhasil';

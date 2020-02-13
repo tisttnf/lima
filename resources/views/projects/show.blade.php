@@ -56,7 +56,7 @@
                 </tr>
                 <tr>
                     <td>Created By</td>
-                    <td>{{ $project->created_by }}</td>
+                    <td>{{ $project->created_by->nama }}</td>
                 </tr>
                 <tr>
                     <td>Created At</td>

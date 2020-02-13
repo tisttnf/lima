@@ -34,7 +34,7 @@ class ProjectController extends Controller
         $tanggal_akhir = date('m/d/Y', strtotime($request['tanggal_akhir']));
         $request['jumlah_sprint'] = $this->pekan($tanggal_mulai, $tanggal_akhir);
         $request['budget'] = preg_replace('/\D/', '', $request['budget']);
-        $request['created_by'] = 1;
+        $request['created_by_id'] = 1;
 
         $this->validate($request,[
             'nama' => 'required|unique:project', 

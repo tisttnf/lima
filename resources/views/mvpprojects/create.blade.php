@@ -20,7 +20,8 @@
                 <tr>
                     <td>Project</td>
                     <td>
-                        <select name="project_id" id="project_id">
+                        <select name="project_id">
+                            <option disabled selected>Pilih Project</option>
                             @foreach ($projects as $project)
                                 <option value="{{ $project->id }}" {{ (old("project_id") == $project->id ? "selected":"") }}>{{ $project->nama }}</option>  
                             @endforeach                                  
@@ -28,22 +29,8 @@
                     </td>                 
                 </tr>
                 <tr>
-                    <td>Sprint</td>
-                    <td>
-                        <div id="sprint">
-
-                        </div>
-
-                        {{-- <select name="sprint">
-                            @for ($i = 0; $i < $project->jumlah_sprint;)
-                                <option value="{{ $project->id }}">{{ $project->nama }}</option>  
-                            @endfor
-                        </select> --}}
-                    </td>                
-                </tr>
-                <tr>
                     <td>Tanggal Rilis</td>
-                    <td><input type="date" name="tanggal_rilis" value={{ old('tanggal_rilis') }}></td>                
+                    <td><input type="date" name="tanggal_rilis" value="{{ old('tanggal_rilis') }}"></td>
                 </tr>
                 <tr>
                     <td>Deskripsi</td>
@@ -56,9 +43,5 @@
             </table>
         </form>
 
-        <script type="text/javascript">
-            
-        </script>
-        
     </body>
 </html>

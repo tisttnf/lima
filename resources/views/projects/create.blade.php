@@ -41,6 +41,7 @@
                     <td>Semester</td>
                     <td>
                         <select name="semester_id">
+                            <option disabled selected>Pilih Semester</option>
                             @foreach ($semesters as $semester)
                                 <option value="{{ $semester->id }}" {{ (old("semester_id") == $semester->id ? "selected":"") }}>{{ $semester->nama }}</option>
                             @endforeach                                  
