@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Project;
-use App\Models\Mvpproject;
-use App\Models\Sprintproject;
-use App\Models\Semester;
-use App\Models\Tim;
+use App\Project;
+use App\Mvpproject;
+use App\Sprintproject;
+use App\Semester;
+use App\Tim;
 use Illuminate\Http\Request;
 
 use DateTime;

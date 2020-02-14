@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Peran;
-use App\Models\Membertim;
+use App\Peran;
+use App\Membertim;
 use Illuminate\Http\Request;
 
 class PeranController extends Controller

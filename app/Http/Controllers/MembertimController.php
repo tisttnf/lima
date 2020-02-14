@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Membertim;
-use App\Models\Membertimskor;
-use App\Models\User;
-use App\Models\Tim;
-use App\Models\Peran;
+use App\Membertim;
+use App\Membertimskor;
+use App\User;
+use App\Tim;
+use App\Peran;
 use Illuminate\Http\Request;
 
 class MembertimController extends Controller

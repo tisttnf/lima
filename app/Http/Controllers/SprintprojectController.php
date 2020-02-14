@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Sprintproject;
-use App\Models\Project;
-use App\Models\Logproject;
+use App\Sprintproject;
+use App\Project;
+use App\Logproject;
 use Illuminate\Http\Request;
 
 class SprintprojectController extends Controller

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Semester;
-use App\Models\Project;
-use App\Models\Tim;
+use App\Semester;
+use App\Project;
+use App\Tim;
 use Illuminate\Http\Request;
 
 class SemesterController extends Controller

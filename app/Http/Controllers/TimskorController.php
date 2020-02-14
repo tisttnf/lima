@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Timskor;
-use App\Models\Tim;
-use App\Models\User;
+use App\Timskor;
+use App\Tim;
+use App\User;
 use Illuminate\Http\Request;
 
 class TimskorController extends Controller

@@ -63,6 +63,7 @@ create table "user"(
 	created_at timestamp,
 	updated_at timestamp 
 );
+select * from "user";
 
 -- Fix
 create table project_owner(

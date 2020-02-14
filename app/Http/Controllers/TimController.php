@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Tim;
-use App\Models\Semester;
-use App\Models\Prodi;
-use App\Models\User;
-use App\Models\Membertim;
-use App\Models\Timskor;
+use App\Tim;
+use App\Semester;
+use App\Prodi;
+use App\User;
+use App\Membertim;
+use App\Timskor;
 use Illuminate\Http\Request;
 
 class TimController extends Controller

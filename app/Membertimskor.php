@@ -1,23 +1,23 @@
 <?php
 
-namespace App\Models;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Timskor extends Model
+class Membertimskor extends Model
 {
-    protected $table = 'tim_skor';
+    protected $table = 'member_tim_skor';
 
     protected $fillable = [
-        'tim_id',
+        'member_tim_id',
         'penilai_id',
         'tanggal',
         'skor',
     ];
 
-    public function tim()
+    public function member_tim()
     {
-        return $this->belongsTo(Tim::class);
+        return $this->belongsTo(Membertim::class);
     }
 
     public function penilai()

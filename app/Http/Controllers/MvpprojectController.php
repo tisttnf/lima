@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mvpproject;
-use App\Models\Project;
+use App\Mvpproject;
+use App\Project;
 use Illuminate\Http\Request;
 
 class MvpprojectController extends Controller
