@@ -14,7 +14,17 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    @if(Auth::user()->role == 'Project Owner')
+                        @include('roles.po')
+                    @elseif(Auth::user()->role == 'Dosen')
+                        @include('roles.dosen')
+                    @elseif(Auth::user()->role == 'Asisten Dosen')
+                        @include('roles.asdos')
+                    @elseif(Auth::user()->role == 'Mahasiswa')
+                        @include('roles.mahasiswa')
+                    @else
+                        @include('roles.admin')
+                    @endif
                 </div>
             </div>
         </div>

@@ -7,6 +7,7 @@ use App\Mvpproject;
 use App\Sprintproject;
 use App\Semester;
 use App\Tim;
+
 use Illuminate\Http\Request;
 
 use DateTime;
@@ -34,7 +35,7 @@ class ProjectController extends Controller
         $tanggal_akhir = date('m/d/Y', strtotime($request['tanggal_akhir']));
         $request['jumlah_sprint'] = $this->pekan($tanggal_mulai, $tanggal_akhir);
         $request['budget'] = preg_replace('/\D/', '', $request['budget']);
-        $request['created_by_id'] = 1;
+        $request['created_by_id'] = $request->user()->id;
 
         $this->validate($request,[
             'nama' => 'required|unique:project', 

@@ -60,10 +60,10 @@ create table "user"(
 	foto varchar default null,
 	nohp varchar(15) not null unique,
 	fingerprint_pin int default null unique,
+	remember_token varchar default null,
 	created_at timestamp,
 	updated_at timestamp 
 );
-select * from "user";
 
 -- Fix
 create table project_owner(
@@ -283,16 +283,19 @@ insert into peran values
 (default, 'Data Analyst');
 
 insert into project_owner values
-(default, 'Lukman Rosyidi', 'Project Owner', 'lukman@gmail.com', '123456', default, '08123456780', default, default, default);
+(default, 'Lukman Rosyidi', 'Project Owner', 'lukman@gmail.com', '$2y$10$hHX9BQBrja9/5Ct2TFm09eoyGixIk/t7YBseiApUqDbYAL1ajl4Im', default, '08123456780', default, default, default, default);
 
 insert into dosen values
-(default, 'Sirojul Munir', 'Dosen', 'sirojul@gmail.com', '123456', default, '08123456789', default, default, default, '0110212345');
+(default, 'Sirojul Munir', 'Dosen', 'sirojul@gmail.com', '$2y$10$hHX9BQBrja9/5Ct2TFm09eoyGixIk/t7YBseiApUqDbYAL1ajl4Im', default, '08123456789', default, default, default, default, '0110212345');
 
 insert into mahasiswa values
-(default, 'Muhammad Azhar Rasyad', 'Mahasiswa', 'muhazharrasyad@gmail.com', '123456', default, '081290351971', default, default, default, '0110217029');
+(default, 'Muhammad Azhar Rasyad', 'Mahasiswa', 'muhazharrasyad@gmail.com', '$2y$10$hHX9BQBrja9/5Ct2TFm09eoyGixIk/t7YBseiApUqDbYAL1ajl4Im', default, '081290351971', default, default, default, default, '0110217029');
 
 insert into asisten_dosen values
-(default, 'Muhammad Yazid Supriadi', 'Asisten Dosen', 'yazid@gmail.com', '123456', default, '081290351972', default, default, default, '0110217030');
+(default, 'Muhammad Yazid Supriadi', 'Asisten Dosen', 'yazid@gmail.com', '$2y$10$hHX9BQBrja9/5Ct2TFm09eoyGixIk/t7YBseiApUqDbYAL1ajl4Im', default, '081290351972', default, default, default, default, '0110217030');
+
+insert into admin values
+(default, 'Admin 1', 'Admin', 'admin@gmail.com', '$2y$10$hHX9BQBrja9/5Ct2TFm09eoyGixIk/t7YBseiApUqDbYAL1ajl4Im', default, '08123456700', default, default, default, default);
 
 insert into project values
 (default, 'Pemrograman Mobile', 'Membuat Aplikasi Android untuk Resep Masakan', '01-01-2020', '03-01-2020', 12, 10000000, default, default, 1, default, default, 1);
@@ -314,3 +317,8 @@ insert into tim_skor values
 
 insert into member_tim_skor values
 (default, 1, 2, '01-01-2020', 80);
+
+select * from project_owner;
+select * from dosen;
+select * from asisten_dosen;
+select * from mahasiswa;

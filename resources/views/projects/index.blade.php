@@ -2,7 +2,9 @@
     <body>
         <a href="{{ url('/') }}">Home</a>
         <br>
-        <a href="{{ route('project.create') }}">Create</a>
+        @if(Auth::User()->role == 'Project Owner')
+            <a href="{{ route('project.create') }}">Create</a>
+        @endif
 
         @if (count($errors) > 0)
             @foreach ($errors->all() as $error)
@@ -31,12 +33,14 @@
                     <td>{{ $project->status }}</td>
                     <td>{{ $project->persen }}</td>   
                     <td><a href="{{ route('project.show', $project->id) }}">Read</a></td>
-                    <td><a href="{{ route('project.edit', $project->id) }}">Edit</a></td>
-                    <form action="{{ route('project.destroy', $project->id)}}" method="post">
-                        {{ csrf_field() }}
-                        <input type="hidden" name="_method" value="DELETE">
-                        <td><button onclick="return confirm('Apakah yakin dihapus?')" type="submit">Delete</button></td>
-                    </form> 
+                    @if(Auth::User()->role == 'Admin')
+                        <td><a href="{{ route('project.edit', $project->id) }}">Edit</a></td>                    
+                        <form action="{{ route('project.destroy', $project->id)}}" method="post">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="_method" value="DELETE">
+                            <td><button onclick="return confirm('Apakah yakin dihapus?')" type="submit">Delete</button></td>
+                        </form> 
+                    @endif
                 </tr>
             @endforeach            
         </table>

@@ -41,6 +41,14 @@
                     <td><input type="text" name="nohp" value="{{ old('nohp') }}" required></td>
                 </tr>
                 <tr>
+                    <td>NIDN</td>
+                    <td><input type="text" name="nidn" value="{{ old('nidn') }}"></td>
+                </tr>
+                <tr>
+                    <td>NIM</td>
+                    <td><input type="text" name="nim" value="{{ old('nim') }}"></td>
+                </tr>
+                <tr>
                     <td><a href="{{ url('/') }}">Kembali</a></td>
                     <td>
                         <button type="submit" class="btn btn-primary">
