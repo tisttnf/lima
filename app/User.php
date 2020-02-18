@@ -54,4 +54,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Timskor::class, 'penilai_id', 'id');        
     }
+
+    public function mvpprojects()
+    {
+        return $this->hasMany(Mvpproject::class, 'created_by_id', 'id');        
+    }
 }

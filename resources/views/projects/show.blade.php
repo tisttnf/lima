@@ -1,7 +1,7 @@
 <html>
     <body>        
-        <form action="{{ route('project.store')}}" method="post">
-            {{ csrf_field() }}
+        {{-- <form action="{{ route('project.store')}}" method="post">
+            {{ csrf_field() }} --}}
             <table border=1>
                 <tr>
                     <th>Project</th>
@@ -48,7 +48,53 @@
                 </tr>
                 <tr>
                     <td>Tim</td>
-                    <td>{{ $project->tim_id }}</td>
+                    @if (Auth::User()->role == 'Dosen')        
+                        <form action="{{ route('project.update', $project->id)}}" method="post">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="_method" value="PATCH">      
+                            <td>                            
+                                <select name="tim_id">
+                                    @if(!is_null($project->tim_id))
+                                        <option value="{{ $project->tim_id }}" disabled selected>{{ $project->tim->nama }}</option>
+                                    @else
+                                        <option disabled selected>Pilih Tim</option>
+                                    @endif                 
+                                        <option value="">Belum Ada</option>             
+                                    @foreach ($tims as $tim)                                
+                                        <option value="{{ $tim->id }}">{{ $tim->nama }}</option>  
+                                    @endforeach                                  
+                                </select>                            
+                            </td>
+                            <td>
+                                <button type="submit">Pilih</button>
+                            </td>
+                        </form> 
+                    @else
+                        <td>{{ $project->tim->nama }}</td>                        
+                    @endif
+                </tr>
+                <tr>
+                    <td>Member Tim</td>
+                    <td>
+                        <table border=1> 
+                            <tr>
+                                <th>ID</th>                                    
+                                <th>Mahasiswa</th>
+                                <th>Peran</th>
+                                <th>Tanggung Jawab</th>
+                                <th>Final Skor</th>
+                            </tr>          
+                            @foreach ($membertims as $membertim)
+                                <tr>
+                                    <td>{{ $membertim->id }}</td> 
+                                    <td>{{ $membertim->mahasiswa->nama }}</td> 
+                                    <td>{{ $membertim->peran->nama }}</td>
+                                    <td>{{ $membertim->tanggung_jawab }}</td>  
+                                    <td>{{ $membertim->final_skor }}</td>                                        
+                                </tr>
+                            @endforeach            
+                        </table>
+                    </td>
                 </tr>
                 <tr>
                     <td>Final Skor</td>
@@ -67,10 +113,27 @@
                     <td>{{ $project->updated_at }}</td>                
                 </tr>	
                 <tr>
+                    <td>MVP Project</td>
+                    <td>
+                        @foreach ($mvpprojects as $mvpproject)
+                            <tr>
+                                <td>{{ $mvpproject->id }}</td>
+                                <td>{{ $mvpproject->project->nama }}</td>
+                                <td>{{ $mvpproject->tanggal_rilis }}</td>
+                                <td>{{ $mvpproject->deskripsi }}</td>   
+                                <td>{{ $mvpproject->created_by->nama }}</td>   
+                            </tr>
+                        @endforeach
+                    </td>             
+                </tr>
+                <tr>
+                    <td>Log Project</td>
+                </tr>
+                <tr>
                     <td><a href="{{ route('project.index') }}">Kembali</a></td>
                 </tr>
             </table>
-        </form>
+        {{-- </form> --}}
 
         <script type="text/javascript">
 		

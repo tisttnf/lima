@@ -7,6 +7,7 @@ use App\Mvpproject;
 use App\Sprintproject;
 use App\Semester;
 use App\Tim;
+use App\Membertim;
 
 use Illuminate\Http\Request;
 
@@ -54,8 +55,11 @@ class ProjectController extends Controller
     public function show($id)
     {
         $project = Project::findOrFail($id);
+        $mvpprojects = Mvpproject::where('project_id', '=', $id)->get();
+        $tims = Tim::all();
+        $membertims = Membertim::where('tim_id', '=', $project->tim_id)->get();
 
-        return view('projects.show', compact('project'));
+        return view('projects.show', compact('project', 'mvpprojects', 'tims', 'membertims'));
     }
 
     public function edit($id)
@@ -69,20 +73,22 @@ class ProjectController extends Controller
 
     public function update(Request $request, $id)
     {
-        $tanggal_mulai = date('m/d/Y', strtotime($request['tanggal_mulai']));
-        $tanggal_akhir = date('m/d/Y', strtotime($request['tanggal_akhir']));
-        $request['jumlah_sprint'] = $this->pekan($tanggal_mulai, $tanggal_akhir);
-        $request['budget'] = preg_replace('/\D/', '', $request['budget']);
-
-        $this->validate($request,[
-            'nama' => 'required|unique:project,nama,'.$id, 
-            'deskripsi' => 'required',
-            'tanggal_mulai' => 'required|date',
-            'tanggal_akhir' => 'required|date|after_or_equal:tanggal_mulai',
-            'budget' => 'required',
-            'persen' => 'required',
-            'final_skor' => 'required',     
-        ]);
+        if($request->user()->role == 'Admin'){
+            $tanggal_mulai = date('m/d/Y', strtotime($request['tanggal_mulai']));
+            $tanggal_akhir = date('m/d/Y', strtotime($request['tanggal_akhir']));
+            $request['jumlah_sprint'] = $this->pekan($tanggal_mulai, $tanggal_akhir);
+            $request['budget'] = preg_replace('/\D/', '', $request['budget']);
+        
+            $this->validate($request,[
+                'nama' => 'required|unique:project,nama,'.$id, 
+                'deskripsi' => 'required',
+                'tanggal_mulai' => 'required|date',
+                'tanggal_akhir' => 'required|date|after_or_equal:tanggal_mulai',
+                'budget' => 'required',
+                'persen' => 'required',
+                'final_skor' => 'required',     
+            ]);
+        }        
 
         $project = Project::findOrFail($id);
         $project->update($request->all());

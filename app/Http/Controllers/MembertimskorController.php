@@ -26,7 +26,7 @@ class MembertimskorController extends Controller
 
     public function store(Request $request)
     {
-        $request['penilai_id'] = 2;
+        $request['penilai_id'] = $request->user()->id;
 
         $this->validate($request,[
             'member_tim_id' => 'required',
@@ -34,8 +34,18 @@ class MembertimskorController extends Controller
         ]); 
 
         Membertimskor::create($request->all());
+        $membertim = Membertim::findOrFail($request['member_tim_id']);        
+        $membertim->final_skor = Membertimskor::sum('skor') / Membertimskor::count('member_tim_id');
+        $membertim->update();
+        // $tim = Tim::findOrFail($membertim->tim_id);
+        // $tim->final_skor = $membertimfinalskor / 2;
+        // $tim->update();
 
-        return redirect()->route('membertimskor.index')->withMessage('Tambah Data Berhasil');
+        if($request->user()->role == 'Dosen'){
+            return redirect()->route('tim.show', $membertim->tim_id)->withMessage('Tambah Data Berhasil');
+        }else{
+            return redirect()->route('membertimskor.index')->withMessage('Tambah Data Berhasil');
+        }        
     }
 
     public function show($id)

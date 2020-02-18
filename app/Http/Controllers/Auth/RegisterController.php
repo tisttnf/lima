@@ -25,13 +25,42 @@ class RegisterController extends Controller
 
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'nama' => 'required|string|max:255',
-            'role' => 'required',
-            'email' => 'required|string|email|max:255|unique:user',
-            'password' => 'required|string|min:6|confirmed',
-            'nohp' => 'required|unique:user',
-        ]);
+        if($data['role'] == 'Dosen'){
+            return Validator::make($data, [
+                'nama' => 'required|string|max:255',
+                'role' => 'required',
+                'email' => 'required|string|email|max:255|unique:user',
+                'password' => 'required|string|min:6|confirmed',
+                'nohp' => 'required|unique:user',
+                'nidn' => 'required|unique:dosen',
+            ]);
+        }else if($data['role'] == 'Asisten Dosen'){
+            return Validator::make($data, [
+                'nama' => 'required|string|max:255',
+                'role' => 'required',
+                'email' => 'required|string|email|max:255|unique:user',
+                'password' => 'required|string|min:6|confirmed',
+                'nohp' => 'required|unique:user',
+                'nim' => 'required|unique:asisten_dosen',
+            ]);
+        }else if($data['role'] == 'Asisten Dosen'){
+            return Validator::make($data, [
+                'nama' => 'required|string|max:255',
+                'role' => 'required',
+                'email' => 'required|string|email|max:255|unique:user',
+                'password' => 'required|string|min:6|confirmed',
+                'nohp' => 'required|unique:user',
+                'nim' => 'required|unique:mahasiswa',
+            ]);
+        }else{
+            return Validator::make($data, [
+                'nama' => 'required|string|max:255',
+                'role' => 'required',
+                'email' => 'required|string|email|max:255|unique:user',
+                'password' => 'required|string|min:6|confirmed',
+                'nohp' => 'required|unique:user',
+            ]);
+        }
     }
 
     protected function create(array $data)

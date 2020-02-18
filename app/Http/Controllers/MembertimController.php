@@ -30,7 +30,7 @@ class MembertimController extends Controller
 
     public function store(Request $request)
     {
-        $request['created_by_id'] = 2;
+        $request['created_by_id'] = $request->user()->id;
 
         $this->validate($request,[
             'tim_id' => 'required',
@@ -39,9 +39,19 @@ class MembertimController extends Controller
             'tanggung_jawab' => 'required',         
         ]); 
 
-        Membertim::create($request->all());
+        $membertim = Membertim::where('tim_id', '=', $request->tim_id)->where('mahasiswa_id', '=', $request->mahasiswa_id)->first();
+        $pesan = 'Gagal Karena Mahasiswa Sudah Ada di dalam Tim Tersebut';
 
-        return redirect()->route('membertim.index')->withMessage('Tambah Data Berhasil');
+        if(!$membertim){            
+            Membertim::create($request->all());
+            $pesan = 'Tambah Data Berhasil';
+        }
+
+        if($request->user()->role == 'Dosen'){
+            return redirect()->route('tim.show', $request->tim_id)->withMessage($pesan);
+        }else{
+            return redirect()->route('membertim.index')->withMessage($pesan);
+        }
     }
 
     public function show($id)
@@ -63,17 +73,32 @@ class MembertimController extends Controller
 
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
-            'tim_id' => 'required',
-            'mahasiswa_id' => 'required',
-            'peran_id' => 'required',
-            'tanggung_jawab' => 'required',         
-        ]); 
+        if($request->user()->role == 'Admin'){
+            $this->validate($request,[
+                'tim_id' => 'required',
+                'mahasiswa_id' => 'required',
+                'peran_id' => 'required',
+                'tanggung_jawab' => 'required',       
+                'final_skor' => 'numeric|between:0,100',  
+            ]); 
+        }else if($request->user()->role == 'Dosen'){
+            $this->validate($request,[ 
+                'final_skor' => 'numeric|between:0,100',  
+            ]); 
+        }   
 
         $membertim = Membertim::findOrFail($id);
         $membertim->update($request->all());
+        // $membertimfinalskor = Membertim::sum('final_skor');
+        // $tim = Tim::findOrFail($membertim->tim_id);
+        // $tim->final_skor = $membertimfinalskor / 2;
+        // $tim->update();
 
-        return redirect()->route('membertim.index')->withMessage('Ubah Data Berhasil');
+        if($request->user()->role == 'Dosen'){
+            return redirect()->route('tim.show', $membertim->tim_id)->withMessage('Ubah Nilai Berhasil');
+        }else{
+            return redirect()->route('membertim.index')->withMessage('Ubah Data Berhasil');
+        }        
     }
 
     public function destroy($id)

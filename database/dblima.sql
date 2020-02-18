@@ -250,7 +250,7 @@ create table log_project(
 	updated_at timestamp
 );
 
--- insert data
+-- Insert data
 
 insert into prodi values 
 (default, 'Sistem Informasi'),
@@ -321,4 +321,3 @@ insert into member_tim_skor values
 select * from project_owner;
 select * from dosen;
 select * from asisten_dosen;
-select * from mahasiswa;

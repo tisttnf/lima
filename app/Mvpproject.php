@@ -19,4 +19,9 @@ class Mvpproject extends Model
     {
         return $this->belongsTo(Project::class);
     }
+
+    public function created_by()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

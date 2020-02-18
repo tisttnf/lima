@@ -1,6 +1,17 @@
 <html>
     <body>
-        <form method="POST" action="{{ route('register') }}">
+
+        @if (count($errors) > 0)
+            @foreach ($errors->all() as $error)
+                {{ $error }}
+            @endforeach
+        @endif
+
+        @if (session('message'))
+            {{ session('message') }}
+        @endif
+
+        <form method="POST" action="{{ route('register') }}" id="register">
             {{ csrf_field() }}
 
             <table border=1>
@@ -58,5 +69,27 @@
                 </tr>
             </table>
         </form>
+        <script type="text/javascript">
+            function toggleShared() {
+                var form = this.form,
+                    role = form.elements.role,
+                    nidn = form.elements.nidn.parentNode.parentNode,
+                    nim = form.elements.nim.parentNode.parentNode;
+                nidn.style.display = 'none';
+                nim.style.display = 'none';
+            
+                if (role.value == 'Dosen') {
+                    nidn.style.display = '';
+                }else if (role.value == 'Asisten Dosen') {
+                    nim.style.display = '';
+                }else if (role.value == 'Mahasiswa'){
+                    nim.style.display = '';
+                }
+            }
+        
+            var form = document.getElementById('register');
+            form.elements.role.onchange = toggleShared;
+            form.elements.role.onchange();
+        </script>
     </body>
 </html>

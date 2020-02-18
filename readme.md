@@ -25,11 +25,53 @@
 
 - php artisan make:auth
 
-# CRUD Table
+# Tabel
 
+- user
+- admin
+- project_owner
+- dosen
+- asisten_dosen
+- mahasiswa
 - prodi
+- semester
+- peran
+- project
+- mvp_project
+- sprint_project
+- log_project
+- tim
+- member_tim
+- tim_skor
+- member_tim_skor
+
+# Role
+
+- Admin :
+    - Manajemen User
+    - Manajemen Absen
+    - Manajemen Tabel
+- Project Owner :
+    - Membuat Project
+    - Mereview Project
+    - Menilai Project
+- Dosen :
+    - Memasukkan Tim ke Project    
+    - Membuat Tim
+    - Memasukkan Asisten Dosen ke Project
+    - Membuat Member Tim
+    - Memasukkan Member Tim ke Project
+    - Menilai Member Tim dan Tim
+    - Melihat
+- Asisten Dosen :
+    -  
+- Mahasiswa :
+    - MVP Project
+    - Sprint Project
+    - Log Project
 
 # Referensi
 
 - https://github.com/mazharrasyad/Web-Laravel-Learn
 - https://laravel.com/
+- https://medium.com/@farahoktarina/a-simple-restful-web-service-in-laravel-fdeed60ecb55
