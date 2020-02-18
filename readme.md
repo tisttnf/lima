@@ -75,3 +75,4 @@
 - https://github.com/mazharrasyad/Web-Laravel-Learn
 - https://laravel.com/
 - https://medium.com/@farahoktarina/a-simple-restful-web-service-in-laravel-fdeed60ecb55
+- https://www.youtube.com/playlist?list=PL1aMeb5UP_PG1c7KcB-5RGjN8C5q5kzWX
