@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Link and Match
+                    Link and Match Proyek
                 </div>
 
                 <div class="links">
