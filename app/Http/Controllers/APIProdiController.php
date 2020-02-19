@@ -9,6 +9,6 @@ class APIProdiController extends Controller
 {
     public function index(){
         $prodis = Prodi::all();
-        return response()->json([$prodis]);
+        return response()->json($prodis);
     }
 }
